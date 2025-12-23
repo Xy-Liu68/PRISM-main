@@ -1,0 +1,44 @@
+name: prism
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - cudatoolkit=11.8.0
+  - pip
+  - openmm=8.1.2  
+  - swig          
+  - numpy=1.24.4
+  - pip:
+      - torch==2.4.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+      - torchvision==0.19.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+      - torchaudio==2.4.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+      - dgl==2.4.0+cu118 --find-links https://data.dgl.ai/wheels/cu118/repo.html
+      - dgllife==0.3.2
+      - torch-geometric==2.6.1
+      - torch-scatter==2.1.2+pt24cu118 --find-links https://data.pyg.org/whl/torch-2.4.0+cu118.html
+      - torch-sparse==0.6.18+pt24cu118 --find-links https://data.pyg.org/whl/torch-2.4.0+cu118.html
+      - torch-cluster==1.6.3+pt24cu118 --find-links https://data.pyg.org/whl/torch-2.4.0+cu118.html
+      - torch-spline-conv==1.2.2+pt24cu118 --find-links https://data.pyg.org/whl/torch-2.4.0+cu118.html
+      - egnn-pytorch==0.2.8
+      - pyg-lib==0.4.0+pt24cu118 --find-links https://data.pyg.org/whl/torch-2.4.0+cu118.html
+      - transformers==4.28.1
+      - rdkit==2022.3.5
+      - biopython==1.83
+      - biopandas==0.5.1
+      - forgi==2.2.3
+      - py3dmol==2.5.3
+      - pychimera==0.2.7
+      - networkx==2.8.8
+      - scikit-learn==0.24.2
+      - pandas==1.2.4
+      - scipy==1.10.1
+      - joblib==1.4.2
+      - tqdm==4.67.1
+      - matplotlib==3.7.5
+      - seaborn==0.13.2
+      - tensorboard==2.14.0
+      - tensorboardx==2.6.2.2
+      - pyyaml==6.0.2
+      - h5py
+      - lmdb
