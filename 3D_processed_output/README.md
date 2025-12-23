@@ -1,6 +1,16 @@
-### PRISM
-### Generate RNA Structure
-We use [RhoFold+](https://github.com/ml4bio/RhoFold) to generate RNA 3D Structure.
+### PRISM Data Preparation
+### Download Pre-processed 3D Data
+The processed 3D structures are available for download from Google Drive.[prism_data](https://drive.google.com/drive/folders/1h8Zi4Dl5_dJ3-1Oz0pR1Elf06MDFtp2L?usp=drive_link)
+
+### Unzip the datasets
+```bash
+unzip smrtnet_processed_output.zip -d ./PRISM-main/3D_processed_output
+
+unzip all_benchmark_processed_output.zip -d ./PRISM-main/3D_processed_output
+```
+
+### Generate RNA Structure from Scratch
+We use [RhoFold+](https://github.com/ml4bio/RhoFold) to generate RNA 3D Structure.It takes about 60 hours to run.
 
 The training data is available in: `SMRTnet_data.txt` 
 ### Training datasets convert to 3D
