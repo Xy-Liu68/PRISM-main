@@ -184,7 +184,7 @@ if __name__ == '__main__':
     parser.add_argument('--mol_feat_dim', type=int, default=41)
     parser.add_argument('--lr', type=float, default=0.0002)
     parser.add_argument('--weight_decay', type=float, default=1e-4)
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--num_workers', type=int, default=4)
     parser.add_argument('--gpu', type=int, default=0)
