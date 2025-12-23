@@ -100,12 +100,14 @@ The file must contain exactly **3 columns** in the following order:
 |-----------------|-------------|-------------|
 
 | C#Cc1ccc(-c2nnc(NC(=O)c3ccc(N)cc3)o2)cc1 | UGGCACCUCGAUGUCGGCUCAUCACAUCCUG | 1 |
+
 | C#CCCC1(CCNCc2c[nH]c3[nH]c(N)nc(=O)c23)N=N1 | CUGGGUCGCAGUAACCCCAGUUAACAAAACA | 0 | 
+
 | CCOc1ccc(NC(=O)c2ccc(CNCc3ccc(O)cc3)cc2)cc1 | AAAGGUCGCAGUCCCCCCAGUUAACAAAAAA | 0 | 
 
 ...
 
-| ... | ... | ... | ... | 
+| ... | ... | ... | 
 
 ## 2. Step 1: Process Data (Generate 3D Structures)
 Use process_new_data.py to convert your sequences into 3D PDB structures using RhoFold+ and process SMILES into graphs.
