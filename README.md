@@ -78,3 +78,49 @@ python train_evaluation.py
 
 ### Model Path
 The weights of the model we have trained are all saved in: `./PRISM-main/results`
+
+
+### Training your own datasets
+We have simplified the process so you do NOT need secondary structure information (e.g., `((...))`).
+
+There's two steps:
+1. **Data Processing**: Generate 3D structures from sequences.
+2. **Training**: Train the model using the processed data.
+
+## 1. Data Preparation
+Prepare your dataset in a `.txt` file using **Tab-separated values**.
+The file must contain exactly **3 columns** in the following order:
+1.  **SMILES**: The chemical structure of the small molecule.
+2.  **RNA Sequence**: The nucleotide sequence (A, U, C, G).
+3.  **Label**: Binary label (1 for binding, 0 for non-binding).
+**Format Example:**
+| SMILES | Sequence | label |
+|-----------------|-------------|-------------|
+| C#Cc1ccc(-c2nnc(NC(=O)c3ccc(N)cc3)o2)cc1 | UGGCACCUCGAUGUCGGCUCAUCACAUCCUG | 1 |
+| C#CCCC1(CCNCc2c[nH]c3[nH]c(N)nc(=O)c23)N=N1 | CUGGGUCGCAGUAACCCCAGUUAACAAAACA | 0 | 
+| CCOc1ccc(NC(=O)c2ccc(CNCc3ccc(O)cc3)cc2)cc1 | AAAGGUCGCAGUCCCCCCAGUUAACAAAAAA | 0 | 
+| ... | ... | ... | ... | 
+
+## 2. Step 1: Process Data (Generate 3D Structures)
+Use process_new_data.py to convert your sequences into 3D PDB structures using RhoFold+ and process SMILES into graphs.
+```bash
+python ./PRISM-main/process_new_data.py \
+    --input_file ./PRISM-main/data/{your_dataset}.txt \
+    --output_dir ./PRISM-main/3D_processed_output/{your_dataset}_processed
+```
+--input_file: Path to your dataset text file.
+--output_dir: Folder where the 3D structures will be saved.
+
+Note: This step requires a GPU and may take time depending on dataset size.
+
+
+## 3. Step 2: Train the Model
+Once processing is complete, use train_new_data.py to train the model. 
+```bash
+python ./PRISM-main/train_new_data.py \
+  --data_file ./PRISM-main/data/{your_dataset}.txt \
+  --data_dir ./PRISM-main/3D_processed_output/{your_dataset}_processed \
+  --epochs 100 \
+  --batch_size 16 \
+  --log_file ./PRISM-main/results/{your_dataset}_training_log.txt
+```
