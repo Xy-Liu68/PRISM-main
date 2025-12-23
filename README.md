@@ -95,10 +95,13 @@ The file must contain exactly **3 columns** in the following order:
 3.  **Label**: Binary label (1 for binding, 0 for non-binding).
 **Format Example:**
 | SMILES | Sequence | label |
+
 |-----------------|-------------|-------------|
+
 | C#Cc1ccc(-c2nnc(NC(=O)c3ccc(N)cc3)o2)cc1 | UGGCACCUCGAUGUCGGCUCAUCACAUCCUG | 1 |
 | C#CCCC1(CCNCc2c[nH]c3[nH]c(N)nc(=O)c23)N=N1 | CUGGGUCGCAGUAACCCCAGUUAACAAAACA | 0 | 
 | CCOc1ccc(NC(=O)c2ccc(CNCc3ccc(O)cc3)cc2)cc1 | AAAGGUCGCAGUCCCCCCAGUUAACAAAAAA | 0 | 
+...
 | ... | ... | ... | ... | 
 
 ## 2. Step 1: Process Data (Generate 3D Structures)
