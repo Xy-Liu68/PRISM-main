@@ -132,3 +132,59 @@ python ./PRISM-main/train_new_data.py \
   --batch_size 16 \
   --log_file ./PRISM-main/results/{your_dataset}_training_log.txt
 ```
+
+
+## ⭐ Quick Start Demo
+To help users immediately verify the installation and try the pipeline, we provide a sample dataset (`your_own_data_example.txt`) and exact commands to reproduce the results.
+
+### 1. Sample Data
+A small sample dataset (2 entries) is provided at:
+- `./data/your_own_data_example.txt`
+
+### 2. Step 1: Run Data Processing
+Run the following command to generate 3D RNA structures and Molecular Graphs from the sample data:
+
+```bash
+python process_new_data.py \
+    --input_file ./data/your_own_data_example.txt \
+    --output_dir ./3D_processed_output/demo_processed
+Expected Output:
+
+Starting data processing...
+Input File: .../data/your_own_data_example.txt
+Found 2 pairs to process.
+Processing: 100%|████████████| 2/2 [00:17<00:00,  8.71s/it]
+
+Processing Complete!
+Success: 2 | Failed: 0
+Output saved to: .../3D_processed_output/demo_processed
+3. Step 2: Run Model Training (Demo Mode)
+Once processing is complete, run the training script. Note: Since the sample size is very small (2 lines), the script will automatically switch to "DEMO MODE" (using the same data for training/validation/testing) to prevent errors.
+
+python train_new_data.py \
+  --data_file ./data/your_own_data_example.txt \
+  --data_dir ./3D_processed_output/demo_processed \
+  --epochs 5 \
+  --batch_size 2 \
+  --log_file ./results/demo_training_log.txt
+Expected Output:
+
+--- Training on Custom 3-Column Dataset ---
+Data: ./data/your_own_data_example.txt
+3D Dir: ./3D_processed_output/demo_processed
+...
+[WARNING] Dataset size is very small (<5). Skipping random split.
+[WARNING] Running in DEMO MODE: Using the same data for Train/Val/Test.
+
+Starting Training...
+Epoch 1/5 | Loss: 0.6555 | Train Acc: 0.50 | Val F1: 0.6667                                                                                                                                                            
+...
+Epoch 5/5 | Loss: 0.3014 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                            
+
+Evaluating on Test Set...
+------------------------------
+Test Accuracy:  0.5000
+Test F1 Score:  0.6667
+Test ROC-AUC:   1.0000
+------------------------------
+Log saved to ./results/demo_training_log.txt
