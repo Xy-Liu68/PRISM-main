@@ -148,8 +148,10 @@ Run the following command to generate 3D RNA structures and Molecular Graphs fro
 python process_new_data.py \
     --input_file ./data/your_own_data_example.txt \
     --output_dir ./3D_processed_output/demo_processed
-Expected Output:
+```
 
+Expected Output:
+```
 Starting data processing...
 Input File: .../data/your_own_data_example.txt
 Found 2 pairs to process.
@@ -158,17 +160,22 @@ Processing: 100%|████████████| 2/2 [00:17<00:00,  8.71s/
 Processing Complete!
 Success: 2 | Failed: 0
 Output saved to: .../3D_processed_output/demo_processed
-3. Step 2: Run Model Training (Demo Mode)
+```
+
+### 3. Step 2: Run Model Training (Demo Mode)
 Once processing is complete, run the training script. Note: Since the sample size is very small (2 lines), the script will automatically switch to "DEMO MODE" (using the same data for training/validation/testing) to prevent errors.
 
+```bash
 python train_new_data.py \
   --data_file ./data/your_own_data_example.txt \
   --data_dir ./3D_processed_output/demo_processed \
   --epochs 5 \
   --batch_size 2 \
   --log_file ./results/demo_training_log.txt
-Expected Output:
+```
 
+Expected Output:
+```
 --- Training on Custom 3-Column Dataset ---
 Data: ./data/your_own_data_example.txt
 3D Dir: ./3D_processed_output/demo_processed
@@ -178,8 +185,10 @@ Data: ./data/your_own_data_example.txt
 
 Starting Training...
 Epoch 1/5 | Loss: 0.6555 | Train Acc: 0.50 | Val F1: 0.6667                                                                                                                                                            
-...
-Epoch 5/5 | Loss: 0.3014 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                            
+Epoch 2/5 | Loss: 0.4374 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                            
+Epoch 3/5 | Loss: 0.3619 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                            
+Epoch 4/5 | Loss: 0.2271 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                            
+Epoch 5/5 | Loss: 0.3014 | Train Acc: 1.00 | Val F1: 0.6667                                                                                                                                                         
 
 Evaluating on Test Set...
 ------------------------------
@@ -188,3 +197,4 @@ Test F1 Score:  0.6667
 Test ROC-AUC:   1.0000
 ------------------------------
 Log saved to ./results/demo_training_log.txt
+```
